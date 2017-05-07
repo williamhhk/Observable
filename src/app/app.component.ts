@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DataServiceService} from './services/data-service.service'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+
+  constructor (private _dataService : DataServiceService)
+  {
+
+  }
+
+  ngOnInit()
+  {
+    console.log(this._dataService.getDataObservable().subscribe((data)=> console.log(data.json())));
+  }
+
 }
